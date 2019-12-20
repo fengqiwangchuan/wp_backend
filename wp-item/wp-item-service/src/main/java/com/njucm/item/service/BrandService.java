@@ -44,4 +44,9 @@ public class BrandService {
             brandMapper.insertCategoryBrand(cid, brand.getId());
         }
     }
+
+    @Transactional
+    public void updateBrand(Brand brand, List<Long> cids) {
+
+    }
 }

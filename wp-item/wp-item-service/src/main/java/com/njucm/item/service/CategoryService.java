@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -26,8 +27,13 @@ public class CategoryService {
     }
 
     public List<Category> queryCategoryListByBrandId(Long bid) {
-        Category record = new Category();
-//        categoryMapper.query
-        return null;
+        List<Long> cids = categoryMapper.queryCategoryIdByBrandId(bid);
+        List<Category> categoryList = new ArrayList<>();
+        for (Long cid : cids) {
+            Category category = categoryMapper.selectByPrimaryKey(cid);
+            categoryList.add(category);
+        }
+        return categoryList;
     }
+
 }

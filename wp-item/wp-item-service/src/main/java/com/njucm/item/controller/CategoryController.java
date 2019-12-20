@@ -43,7 +43,8 @@ public class CategoryController {
     @RequestMapping("bid/{id}")
     public ResponseEntity<List<Category>> queryCategoryListByBrandId(@PathVariable(value = "id") Long bid) {
         log.info("bid: {}", bid);
-        categoryService.queryCategoryListByBrandId(bid);
-        return null;
+        List<Category> categoryList = categoryService.queryCategoryListByBrandId(bid);
+        return ResponseEntity.ok(categoryList);
     }
+
 }
