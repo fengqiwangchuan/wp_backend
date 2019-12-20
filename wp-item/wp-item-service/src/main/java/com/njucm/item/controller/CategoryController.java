@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -37,5 +38,12 @@ public class CategoryController {
         ResponseEntity<List<Category>> entity = ResponseEntity.ok(categoryList);
         log.info("response: {}", entity);
         return entity;
+    }
+
+    @RequestMapping("bid/{id}")
+    public ResponseEntity<List<Category>> queryCategoryListByBrandId(@PathVariable(value = "id") Long bid) {
+        log.info("bid: {}", bid);
+        categoryService.queryCategoryListByBrandId(bid);
+        return null;
     }
 }

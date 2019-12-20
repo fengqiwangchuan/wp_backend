@@ -9,3 +9,21 @@ CREATE TABLE `tb_category` (
   PRIMARY KEY (`id`),
   KEY `key_parent_id` (`parent_id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='商品类目表，类目和商品(spu)是一对多关系，类目与品牌是多对多关系';
+
+-- 品牌表
+
+CREATE TABLE `tb_brand` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '品牌id',
+  `name` varchar(50) NOT NULL COMMENT '品牌名称',
+  `image` varchar(200) DEFAULT '' COMMENT '品牌图片地址',
+  `letter` char(1) DEFAULT '' COMMENT '品牌的首字母',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=325402 DEFAULT CHARSET=utf8 COMMENT='品牌表，一个品牌下有多个商品（spu），一对多关系';
+
+-- 分类品牌中间表
+
+CREATE TABLE `tb_category_brand` (
+  `category_id` bigint(20) NOT NULL COMMENT '商品类目id',
+  `brand_id` bigint(20) NOT NULL COMMENT '品牌id',
+  PRIMARY KEY (`category_id`,`brand_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='商品分类和品牌的中间表，两者是多对多关系';

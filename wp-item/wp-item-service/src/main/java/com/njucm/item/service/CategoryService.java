@@ -24,4 +24,10 @@ public class CategoryService {
         return list;
 
     }
+
+    public List<Category> queryCategoryListByBrandId(Long bid) {
+        Category record = new Category();
+//        categoryMapper.query
+        return null;
+    }
 }
