@@ -9,14 +9,17 @@ eureka:
       defaultZone: http://127.0.0.1:10086/eureka
     registry-fetch-interval-seconds: 5
   instance:
-    prefer-ip-address: true
+    prefer-ip-address: on
     ip-address: 127.0.0.1
     instance-id: ${spring.application.name}:${server.port}
 zuul:
   prefix: /api
-  retryable: true
+  retryable: on
   routes:
     item-service: /item/** # 将商品微服务映射到/item/**  简写
+  ignored-patterns: /upload/** # 忽略路由
+  ignored-services:
+    - upload-service
 ribbon:
   ConnectTimeout: 250 # 连接超时时间(ms)
   ReadTimeout: 2000 # 通信超时时间(ms)

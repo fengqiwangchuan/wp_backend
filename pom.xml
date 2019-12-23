@@ -32,7 +32,8 @@
 		<module>wp-api-gateway</module>
 		<module>wp-item</module>
 		<module>wp-common</module>
-	</modules>
+        <module>wp-upload</module>
+    </modules>
 
 <!--	<dependencies>-->
 <!--		<dependency>-->

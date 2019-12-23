@@ -27,3 +27,5 @@ CREATE TABLE `tb_category_brand` (
   `brand_id` bigint(20) NOT NULL COMMENT '品牌id',
   PRIMARY KEY (`category_id`,`brand_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='商品分类和品牌的中间表，两者是多对多关系';
+
+
