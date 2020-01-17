@@ -49,4 +49,9 @@ public class BrandService {
     public void updateBrand(Brand brand, List<Long> cids) {
 
     }
+
+    public List<Brand> queryBrandByCategory(Long cid) {
+        return brandMapper.queryByCategoryId(cid);
+    }
+
 }

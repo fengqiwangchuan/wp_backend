@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 public class CorFilter extends ZuulFilter {
 
     private Logger logger = LoggerFactory.getLogger(CorFilter.class);
+
     @Override
     public String filterType() {
         return FilterConstants.PRE_TYPE;
@@ -43,12 +44,14 @@ public class CorFilter extends ZuulFilter {
         RequestContext ctx = RequestContext.getCurrentContext();
         HttpServletResponse response = ctx.getResponse();
         HttpServletRequest request = ctx.getRequest();
-        response.setHeader("Access-Control-Allow-Origin",request.getHeader("Origin"));
-        response.setHeader("Access-Control-Allow-Credentials","true");
-        response.setHeader("Access-Control-Allow-Headers","authorization, content-type");
-        response.setHeader("Access-Control-Allow-Methods","POST,GET");
-        response.setHeader("Access-Control-Expose-Headers","X-forwared-port, X-forwarded-host");
-        response.setHeader("Vary","Origin,Access-Control-Request-Method,Access-Control-Request-Headers");
+        // 此处 setHeader、addHeader 方法都可用。但 addHeader时写多个会报错：“...,but only one is allowed”
+        // response.setHeader("Access-Control-Allow-Origin", "*");
+        response.addHeader("Access-Control-Allow-Origin", "*");
+        // 解决预请求（发送2次请求），此问题也可在 nginx 中作相似设置解决。
+        response.setHeader("Access-Control-Allow-Headers", "x-requested-with,Cache-Control,Pragma,Content-Type,Token, Content-Type");
+        response.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
+        response.setHeader("Access-Control-Max-Age", "3600");
+        response.setHeader("Access-Control-Allow-Credentials", "true");
         //不再路由
 //        ctx.setSendZuulResponse(false);
 //        ctx.setResponseStatusCode(200);

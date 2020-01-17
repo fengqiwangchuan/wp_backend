@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -34,6 +35,10 @@ public class CategoryService {
             categoryList.add(category);
         }
         return categoryList;
+    }
+
+    public List<String> queryNameByIds(List<Long> ids) {
+        return categoryMapper.selectByIdList(ids).stream().map(Category::getName).collect(Collectors.toList());
     }
 
 }
