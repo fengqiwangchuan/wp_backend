@@ -57,4 +57,14 @@ public class BrandController {
         }
         return ResponseEntity.ok(list);
     }
+
+    @GetMapping("list")
+    public ResponseEntity<List<Brand>> queryBrandByIds(@RequestParam("ids") List<Long> ids) {
+        List<Brand> list = brandService.queryBrandByIds(ids);
+        if (list == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return ResponseEntity.ok(list);
+    }
 }
+

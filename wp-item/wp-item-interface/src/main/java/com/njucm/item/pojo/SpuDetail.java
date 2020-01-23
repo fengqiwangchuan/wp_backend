@@ -1,8 +1,11 @@
 package com.njucm.item.pojo;
 
+import lombok.Data;
+
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+@Data
 @Table(name = "tb_spu_detail")
 public class SpuDetail {
     @Id

@@ -17,6 +17,7 @@ zuul:
   retryable: on
   routes:
     item-service: /item/** # 将商品微服务映射到/item/**  简写
+    search-service: /search/**
   ignored-patterns: /upload/** # 忽略路由
   ignored-services:
     - upload-service

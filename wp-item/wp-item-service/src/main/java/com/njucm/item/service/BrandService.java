@@ -54,4 +54,7 @@ public class BrandService {
         return brandMapper.queryByCategoryId(cid);
     }
 
+    public List<Brand> queryBrandByIds(List<Long> ids) {
+        return brandMapper.selectByIdList(ids);
+    }
 }

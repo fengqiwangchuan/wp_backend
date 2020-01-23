@@ -33,7 +33,8 @@
 		<module>wp-item</module>
 		<module>wp-common</module>
         <module>wp-upload</module>
-    </modules>
+		<module>wp-search</module>
+	</modules>
 
 <!--	<dependencies>-->
 <!--		<dependency>-->

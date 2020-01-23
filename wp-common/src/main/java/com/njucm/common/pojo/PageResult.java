@@ -11,11 +11,12 @@ import java.util.List;
 @AllArgsConstructor
 public class PageResult<T> {
     private Long total;
-    private Long totalPage;
+    private Integer totalPage;
     private List<T> items;
 
     public PageResult(Long total, List<T> items) {
         this.total = total;
         this.items = items;
     }
+
 }
