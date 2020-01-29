@@ -34,7 +34,8 @@
 		<module>wp-common</module>
         <module>wp-upload</module>
 		<module>wp-search</module>
-	</modules>
+        <module>wp-goods-web</module>
+    </modules>
 
 <!--	<dependencies>-->
 <!--		<dependency>-->

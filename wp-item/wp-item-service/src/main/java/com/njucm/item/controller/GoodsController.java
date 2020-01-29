@@ -2,6 +2,7 @@ package com.njucm.item.controller;
 
 import com.njucm.common.pojo.PageResult;
 import com.njucm.item.pojo.Sku;
+import com.njucm.item.pojo.Spu;
 import com.njucm.item.pojo.SpuBo;
 import com.njucm.item.pojo.SpuDetail;
 import com.njucm.item.service.GoodsService;
@@ -55,5 +56,14 @@ public class GoodsController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return ResponseEntity.ok(skus);
+    }
+
+    @GetMapping("spu/{id}")
+    public ResponseEntity<Spu> querySpuById(@PathVariable("id") Long id) {
+        Spu spu = goodsService.querySpuById(id);
+        if (spu == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return ResponseEntity.ok(spu);
     }
 }
