@@ -1,0 +1,16 @@
+server:
+  port: 8086
+spring:
+  application:
+    name: sms-service
+  rabbitmq:
+    host: 127.0.0.1
+    username: guest
+    password: guest
+    virtual-host: wp
+wp:
+  sms:
+    accessKeyId:
+    accessKeySecret:
+    signName:
+    verifyCodeTemplate:
